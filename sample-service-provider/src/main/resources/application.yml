@@ -38,6 +38,7 @@ service:
     connectionTimeToLive: 30000
 
 
+
 spring:
   application:
     name: sample-service-provider
