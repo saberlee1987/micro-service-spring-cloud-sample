@@ -1,0 +1,44 @@
+server:
+  port: 8761
+  max-http-header-size: 756000
+  jetty:
+    threads:
+      min: 100
+      max: 3000
+      idle-timeout: 10000
+    connection-idle-timeout: 10000
+    accesslog:
+      enabled: true
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+    appname: ${spring.application.name}
+
+
+spring:
+  application:
+    name: eureka-server
+
+
+management:
+  endpoints:
+    web:
+      base-path: /actuators/${spring.application.name}
+      exposure:
+        include: '*'
+
+
+
+
+

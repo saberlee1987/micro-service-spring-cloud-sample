@@ -1,0 +1,65 @@
+server:
+  port: 9100
+  max-http-header-size: 756000
+  jetty:
+    threads:
+      min: 100
+      max: 3000
+      idle-timeout: 10000
+    connection-idle-timeout: 10000
+    accesslog:
+      enabled: true
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+
+service:
+  api:
+    base-path: /services/${spring.application.name}
+  swagger:
+    title: 'sample service provider'
+    description: 'sample service provider service'
+    version: 'version1.0.0-1401/06/13 13:20'
+
+  goRest:
+    baseUrl: https://gorest.co.in
+    users: /public/v2/users
+    posts: /public/v2/posts
+    comments: /public/v2/comments
+    todos: /public/v2/todos
+    token: 'd68eaa4ff5cb4f4fa6d96e7b806ab0e6802affac456c90d7407fa39182807993'
+  restTemplate:
+    connectionPerRoute: 300
+    maxTotalConnection: 3000
+    connectionTimeout: 10000
+    socketTimeout: 30000
+    connectionRequestTimeout: 30000
+    connectionTimeToLive: 30000
+
+
+spring:
+  application:
+    name: sample-service-provider
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    appname: ${spring.application.name}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    display-operation-id: true
+  api-docs:
+    path: /${spring.application.name}/v3/api-docs
+
+
+management:
+  endpoints:
+    web:
+      base-path: /actuators/${spring.application.name}
+      exposure:
+        include: '*'
