@@ -1,18 +1,16 @@
-package com.saber.sample_service_provider.dto;
+package com.saber.sample_service_client.dto;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class ValidationDto {
-    private String fieldName;
-    private String constraintMessage;
-
+public class UserDto {
+    private Long id;
+    private String name;
+    private String email;
+    private String gender;
+    private String status;
     @Override
     public String toString() {
         return new GsonBuilder()
@@ -20,6 +18,6 @@ public class ValidationDto {
                 .setPrettyPrinting()
                 .setNumberToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
                 .enableComplexMapKeySerialization()
-                .create().toJson(this, ValidationDto.class);
+                .create().toJson(this, UserDto.class);
     }
 }

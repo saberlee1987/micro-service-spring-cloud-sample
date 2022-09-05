@@ -1,4 +1,4 @@
-package com.saber.sample_service_provider.dto;
+package com.saber.sample_service_client.dto;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;

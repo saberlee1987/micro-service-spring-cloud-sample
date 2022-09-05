@@ -1,5 +1,5 @@
 server:
-  port: 9100
+  port: 9101
   max-http-header-size: 756000
   jetty:
     threads:
@@ -18,17 +18,17 @@ service:
   api:
     base-path: /services/${spring.application.name}
   swagger:
-    title: 'sample service provider'
-    description: 'sample service provider service'
-    version: 'version1.0.0-1401/06/13 13:20'
+    title: 'sample service client'
+    description: 'sample service client service'
+    version: 'version1.0.0-1401/06/14 10:40'
 
-  goRest:
-    baseUrl: https://gorest.co.in
-    users: /public/v2/users
-    posts: /public/v2/posts
-    comments: /public/v2/comments
-    todos: /public/v2/todos
-    token: 'd68eaa4ff5cb4f4fa6d96e7b806ab0e6802affac456c90d7407fa39182807993'
+  provider:
+    name: sample-service-provider
+    baseUrl: http://${service.provider.name}
+    users: /services/${service.provider.name}/goRest/users
+    posts: /services/${service.provider.name}/goRest/posts
+    findUserById: /services/${service.provider.name}/goRest/findUserById
+    findPostById: /services/${service.provider.name}/goRest/findPostById
   restTemplate:
     connectionPerRoute: 300
     maxTotalConnection: 3000
@@ -41,7 +41,7 @@ service:
 
 spring:
   application:
-    name: sample-service-provider
+    name: sample-service-client
 eureka:
   client:
     service-url:
@@ -64,11 +64,6 @@ camel:
       registrationScheduled: 30000
     service-call:
       default-load-balancer: true
-
-
-
-
-
 
 
 springdoc:
