@@ -91,6 +91,8 @@ management:
       enabled: true
     restart:
       enabled: true
+    refresh:
+      enabled: true
   endpoints:
     web:
       base-path: /actuators/${spring.application.name}
