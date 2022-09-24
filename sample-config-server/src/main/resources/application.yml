@@ -20,8 +20,9 @@ spring:
    config:
      server:
        git:
-         uri: file://${user.dir}/config_files
+         uri: https://github.com/saberlee1987/sample-config-server-repository.git
          default-label: master
+         clone-on-start: true
 eureka:
   client:
     service-url:
